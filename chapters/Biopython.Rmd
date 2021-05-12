@@ -1,0 +1,25 @@
+# ---
+title: "Bioconductor"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Installation
+
+```{python}
+
+import Bio
+
+```
+
+
+```{python}
+
+import IPython
+print IPython.sys_info()
+
+```
+

@@ -1,0 +1,25 @@
+# ---
+title: "Bioconductor"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Installation
+
+```{r install, include=FALSE}
+
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install(version = "3.12")
+
+```
+
+```{r}
+
+BiocManager::valid()
+
+```
+
