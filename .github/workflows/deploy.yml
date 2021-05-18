@@ -28,8 +28,8 @@ jobs:
     # Build the book
     - name: Build the book
       run: |
-        jupyter-book clean bioinformatics
-        jupyter-book build bioinformatics
+        jupyter-book clean jupyternotebook/bioinformatics
+        jupyter-book build jupyternotebook/bioinformatics
 
     # Deploy the book's HTML to gh-pages branch
     - name: GitHub Pages action
