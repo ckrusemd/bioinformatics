@@ -1,0 +1,10 @@
+title                       : Bioinformatics  # The title of the book. Will be placed in the left navbar.
+author                      : Christian Kruse  # The author of the book
+copyright                   : "2021"  # Copyright year to be placed in the footer
+logo                        : logo.png  # A path to the book logo
+only_build_toc_files        : false
+execute:
+  allow_errors              : true # If `False`, when a code cell raises an error the execution is stopped, otherwise all cells are always run.
+  stderr_output             : show  # One of 'show', 'remove', 'remove-warn', 'warn', 'error', 'severe'
+repository:
+  url                       : https://github.com/ckrusemd/bioinformatics  # The URL to your book's repository

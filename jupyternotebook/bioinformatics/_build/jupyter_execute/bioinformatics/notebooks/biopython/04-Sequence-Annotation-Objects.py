@@ -244,7 +244,7 @@ feature_seq = seq[feature.location.start:feature.location.end]
 print(feature_seq)
 
 
-# In[29]:
+# In[14]:
 
 
 feature_seq = seq[feature.location.start:feature.location.end].reverse_complement()
@@ -253,7 +253,7 @@ print(feature_seq)
 
 # Conversely, the **SeqFeature** also has the extract functionality where a sequence is referenced.
 
-# In[34]:
+# In[15]:
 
 
 feature_seq = feature.extract(seq)
@@ -262,7 +262,7 @@ print(feature_seq)
 
 # # 4.4 Comparison (and differences)
 
-# In[35]:
+# In[16]:
 
 
 from Bio.Seq import Seq
@@ -276,14 +276,14 @@ record2 = SeqRecord(Seq("ACGT"), id="test")
 # ```
 # SeqRecord comparison is deliberately not implemented. Explicitly compare the attributes of interest.
 
-# In[39]:
+# In[17]:
 
 
 print( record1.id )
 print( record2.id )
 
 
-# In[36]:
+# In[18]:
 
 
 print( record1.seq )
@@ -306,7 +306,7 @@ print( record2.seq )
 
 # The format method of **SeqRecord** allows you to print in a format acceptable by SeqIO.
 
-# In[42]:
+# In[19]:
 
 
 from Bio.Seq import Seq
@@ -323,7 +323,7 @@ record = SeqRecord(
         )
 
 
-# In[44]:
+# In[20]:
 
 
 print(record.format("fasta"))
@@ -331,7 +331,7 @@ print(record.format("fasta"))
 
 # # 4.7 Slicing a SeqRecord
 
-# In[45]:
+# In[21]:
 
 
 from Bio import SeqIO
@@ -339,13 +339,13 @@ record = SeqIO.read(genbank_path, "genbank")
 record
 
 
-# In[49]:
+# In[22]:
 
 
 len(record)
 
 
-# In[46]:
+# In[23]:
 
 
 len(record.features)
@@ -353,7 +353,7 @@ len(record.features)
 
 # Selecting a specific gene that has already been sequenced.
 
-# In[48]:
+# In[24]:
 
 
 print(record.features[21])
@@ -361,7 +361,7 @@ print(record.features[21])
 
 # Reversely, select a parent record and get the associated features.
 
-# In[51]:
+# In[25]:
 
 
 sub_record = record[4300:4800]
@@ -369,31 +369,31 @@ print( len( sub_record ) )
 sub_record
 
 
-# In[52]:
+# In[26]:
 
 
 sub_record.features
 
 
-# In[53]:
+# In[27]:
 
 
 print( sub_record.features[0] )
 
 
-# In[54]:
+# In[28]:
 
 
 print( sub_record.features[1] )
 
 
-# In[55]:
+# In[29]:
 
 
 sub_record.description
 
 
-# In[56]:
+# In[30]:
 
 
 sub_record.name
@@ -403,7 +403,7 @@ sub_record.name
 # 
 # You can add SeqRecord objects together, giving a new SeqRecord
 
-# In[63]:
+# In[31]:
 
 
 from Bio import SeqIO
@@ -411,25 +411,25 @@ record = SeqIO.read(genbank_path, "genbank")
 record
 
 
-# In[66]:
+# In[32]:
 
 
 record
 
 
-# In[64]:
+# In[33]:
 
 
 record[2000:]
 
 
-# In[65]:
+# In[34]:
 
 
 record[:2000]
 
 
-# In[69]:
+# In[35]:
 
 
 len(record.features)
@@ -437,14 +437,14 @@ len(record.features)
 
 # ## Shifting
 
-# In[67]:
+# In[36]:
 
 
 shifted = record[2000:] + record[:2000]
 shifted
 
 
-# In[68]:
+# In[37]:
 
 
 len(shifted.features)

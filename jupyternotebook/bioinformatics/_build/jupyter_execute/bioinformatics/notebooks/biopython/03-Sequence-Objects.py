@@ -310,7 +310,7 @@ gene.translate(table="Bacterial", cds = True)
 # * Internally these use codon table objects derived from the NCBI information at [gc.prt](ftp://ftp.ncbi.nlm.nih.gov/entrez/misc/data/)
 # * Also shown on https: [wprintgc.cgi](//www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi )
 
-# In[80]:
+# In[32]:
 
 
 from Bio.Data import CodonTable
@@ -318,13 +318,13 @@ standard_table = CodonTable.unambiguous_dna_by_name["Standard"]
 mito_table = CodonTable.unambiguous_dna_by_name["Vertebrate Mitochondrial"]
 
 
-# In[81]:
+# In[33]:
 
 
 print(standard_table)
 
 
-# In[82]:
+# In[34]:
 
 
 print(mito_table)
@@ -332,19 +332,19 @@ print(mito_table)
 
 # ## Example: Find Codons
 
-# In[84]:
+# In[35]:
 
 
 standard_table.stop_codons
 
 
-# In[85]:
+# In[36]:
 
 
 standard_table.start_codons
 
 
-# In[86]:
+# In[37]:
 
 
 print( mito_table.forward_table["ACG"] )
@@ -357,7 +357,7 @@ print( mito_table.forward_table["CCG"] )
 
 # # 3.11 MutableSeq objects
 
-# In[88]:
+# In[38]:
 
 
 from Bio.Seq import Seq
@@ -365,21 +365,21 @@ my_seq = Seq("GCCATTGTAATGGGCCGCTGAAAGGGTGCCCGA")
 my_seq[5] = "G" # Throws exception
 
 
-# In[97]:
+# In[39]:
 
 
 mutable_seq = my_seq.tomutable()
 mutable_seq
 
 
-# In[98]:
+# In[40]:
 
 
 mutable_seq[0] = "C"
 mutable_seq
 
 
-# In[99]:
+# In[41]:
 
 
 mutable_seq.remove("T")
@@ -388,14 +388,14 @@ mutable_seq
 
 # ## Back to immutable
 
-# In[101]:
+# In[42]:
 
 
 immutable_again_seq = mutable_seq.toseq()
 immutable_again_seq
 
 
-# In[103]:
+# In[43]:
 
 
 immutable_again_seq[5] = "G"
@@ -405,7 +405,7 @@ immutable_again_seq[5] = "G"
 # 
 # A (more) memory efficient way of holding a sequence of unknown letters.
 
-# In[104]:
+# In[44]:
 
 
 from Bio.Seq import UnknownSeq
@@ -416,14 +416,14 @@ print(unk)
 # * DNA is commonly labeled with N
 # * Protein is commonly labeled with X
 
-# In[106]:
+# In[45]:
 
 
 unk_dna = UnknownSeq(20,character="N")
 unk_dna
 
 
-# In[108]:
+# In[46]:
 
 
 unk_protein = UnknownSeq(20,character="X")
