@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chapter 4: Sequence annotation objects &#8212; My Jupyter Book</title>
+    <title>Chapter 4: Sequence annotation objects &#8212; Bioinformatics</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -71,7 +71,7 @@
     <a class="navbar-brand text-wrap" href="../../../index.html">
       
       
-      <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+      <h1 class="site-logo" id="site-title">Bioinformatics</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
@@ -173,7 +173,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/bioinformatics/notebooks/biopython/04-Sequence-Annotation-Objects.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ckrusemd/bioinformatics/master?urlpath=tree/bioinformatics/notebooks/biopython/04-Sequence-Annotation-Objects.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../../../_static/images/logo_binder.svg"
@@ -448,13 +448,16 @@ features is described below in Section 4.3.</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9609
-gi|45478711|ref|NC_005816.1|
-gi|45478711|ref|NC_005816.1| Yersinia pestis biovar Microtus str. 91001 plasmid pPCP1, complete sequence
-gi|45478711|ref|NC_005816.1|
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Seq(&#39;TGTAACGAACGGTGCAATAGTGATCCACACCCAACGCCTGAAATCAGATCCAGG...CTG&#39;)
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="mi">2</span><span class="n">c1c8041c070</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">SeqIO</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">record</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">fasta_path</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span> <span class="nb">len</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">seq</span><span class="p">)</span> <span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span> <span class="n">record</span><span class="o">.</span><span class="n">name</span> <span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span> <span class="n">record</span><span class="o">.</span><span class="n">description</span> <span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;fasta_path&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -475,6 +478,20 @@ gi|45478711|ref|NC_005816.1|
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="mi">12</span><span class="n">dc3993986a</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">wget</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">path</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/biopython/biopython/master/Tests/GenBank/NC_005816.gb&quot;</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">wget</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">path</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;wget&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -485,7 +502,14 @@ gi|45478711|ref|NC_005816.1|
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SeqRecord(seq=Seq(&#39;TGTAACGAACGGTGCAATAGTGATCCACACCCAACGCCTGAAATCAGATCCAGG...CTG&#39;), id=&#39;NC_005816.1&#39;, name=&#39;NC_005816&#39;, description=&#39;Yersinia pestis biovar Microtus str. 91001 plasmid pPCP1, complete sequence&#39;, dbxrefs=[&#39;Project:58037&#39;])
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">8</span><span class="o">-</span><span class="mi">0</span><span class="n">af101ee1bc0</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">SeqIO</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">record</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">genbank_path</span><span class="p">,</span> <span class="s2">&quot;genbank&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">record</span>
+
+<span class="ne">NameError</span>: name &#39;genbank_path&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -502,34 +526,16 @@ gi|45478711|ref|NC_005816.1|
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9609
-NC_005816
-Yersinia pestis biovar Microtus str. 91001 plasmid pPCP1, complete sequence
-NC_005816.1
-[&#39;Project:58037&#39;]
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;molecule_type&#39;: &#39;DNA&#39;,
- &#39;topology&#39;: &#39;circular&#39;,
- &#39;data_file_division&#39;: &#39;BCT&#39;,
- &#39;date&#39;: &#39;21-JUL-2008&#39;,
- &#39;accessions&#39;: [&#39;NC_005816&#39;],
- &#39;sequence_version&#39;: 1,
- &#39;gi&#39;: &#39;45478711&#39;,
- &#39;keywords&#39;: [&#39;&#39;],
- &#39;source&#39;: &#39;Yersinia pestis biovar Microtus str. 91001&#39;,
- &#39;organism&#39;: &#39;Yersinia pestis biovar Microtus str. 91001&#39;,
- &#39;taxonomy&#39;: [&#39;Bacteria&#39;,
-  &#39;Proteobacteria&#39;,
-  &#39;Gammaproteobacteria&#39;,
-  &#39;Enterobacteriales&#39;,
-  &#39;Enterobacteriaceae&#39;,
-  &#39;Yersinia&#39;],
- &#39;references&#39;: [Reference(title=&#39;Genetics of metabolic variations between Yersinia pestis biovars and the proposal of a new biovar, microtus&#39;, ...),
-  Reference(title=&#39;Complete genome sequence of Yersinia pestis strain 91001, an isolate avirulent to humans&#39;, ...),
-  Reference(title=&#39;Direct Submission&#39;, ...),
-  Reference(title=&#39;Direct Submission&#39;, ...)],
- &#39;comment&#39;: &#39;PROVISIONAL REFSEQ: This record has not yet been subject to final\nNCBI review. The reference sequence was derived from AE017046.\nCOMPLETENESS: full length.&#39;}
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">9</span><span class="o">-</span><span class="mi">53</span><span class="n">a3d71bfdd0</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span> <span class="nb">len</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">seq</span><span class="p">)</span> <span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span> <span class="n">record</span><span class="o">.</span><span class="n">name</span> <span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span> <span class="n">record</span><span class="o">.</span><span class="n">description</span> <span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span> <span class="n">record</span><span class="o">.</span><span class="n">id</span> <span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span> <span class="n">record</span><span class="o">.</span><span class="n">dbxrefs</span> <span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;record&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -628,9 +634,16 @@ Bank/EMBL, but corresponds to the `?’ feature coordinate used in UniProt.</p><
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>source [&#39;taxon:229193&#39;]
-gene [&#39;GeneID:2767712&#39;]
-CDS [&#39;GI:45478716&#39;, &#39;GeneID:2767712&#39;]
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">13</span><span class="n">fd2d882976</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">my_snp</span> <span class="o">=</span> <span class="mi">4350</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">record</span><span class="o">.</span><span class="n">features</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="k">if</span> <span class="n">my_snp</span> <span class="ow">in</span> <span class="n">feature</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="n">feature</span><span class="o">.</span><span class="n">qualifiers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;db_xref&quot;</span><span class="p">)))</span>
+
+<span class="ne">NameError</span>: name &#39;record&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -646,8 +659,16 @@ CDS [&#39;GI:45478716&#39;, &#39;GeneID:2767712&#39;]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>source [&#39;taxon:229193&#39;]
-repeat_region None
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">34</span><span class="n">dfc997567d</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">SeqIO</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">my_snp</span> <span class="o">=</span> <span class="mi">1888</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">record</span><span class="o">.</span><span class="n">features</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="k">if</span> <span class="n">my_snp</span> <span class="ow">in</span> <span class="n">feature</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="n">feature</span><span class="o">.</span><span class="n">qualifiers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;db_xref&quot;</span><span class="p">)))</span>
+
+<span class="ne">NameError</span>: name &#39;record&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -677,7 +698,13 @@ repeat_region None
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GACGGCAAAGGCT
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">13</span><span class="o">-</span><span class="mi">7676187</span><span class="n">bd9e2</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">feature_seq</span> <span class="o">=</span> <span class="n">seq</span><span class="p">[</span><span class="n">feature</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">start</span><span class="p">:</span><span class="n">feature</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">end</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">feature_seq</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;seq&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -690,7 +717,13 @@ repeat_region None
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AGCCTTTGCCGTC
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">14</span><span class="o">-</span><span class="n">cd82ea57a6af</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">feature_seq</span> <span class="o">=</span> <span class="n">seq</span><span class="p">[</span><span class="n">feature</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">start</span><span class="p">:</span><span class="n">feature</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">end</span><span class="p">]</span><span class="o">.</span><span class="n">reverse_complement</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">feature_seq</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;seq&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -704,7 +737,13 @@ repeat_region None
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AGCCTTTGCCGTC
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">15</span><span class="o">-</span><span class="n">f8302a03413c</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">feature_seq</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">feature_seq</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;seq&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -789,15 +828,6 @@ ACGT
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&gt;gi|14150838|gb|AAK54648.1|AF376133_1 chalcone synthase [Cucumis sativus]
-MMYQQGCFAGGTVLRLAKDLAENNRGARVLVVCSEITAVTFRGPSETHLDSMVGQALFGD
-GAGAVIVGSDPDLSVERPLYELVWTGATLLPDSEGAIDGHLREVGLTFHLLKDVPGLISK
-NIEKSLKEAFTPLGISDWNSTFWIAHPGGPAILDQVEAKLGLKEEKMRATREVLSEYGNM
-SSAC
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -827,7 +857,14 @@ SSAC
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SeqRecord(seq=Seq(&#39;TGTAACGAACGGTGCAATAGTGATCCACACCCAACGCCTGAAATCAGATCCAGG...CTG&#39;), id=&#39;NC_005816.1&#39;, name=&#39;NC_005816&#39;, description=&#39;Yersinia pestis biovar Microtus str. 91001 plasmid pPCP1, complete sequence&#39;, dbxrefs=[&#39;Project:58037&#39;])
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">21</span><span class="o">-</span><span class="mi">0</span><span class="n">af101ee1bc0</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">SeqIO</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">record</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">genbank_path</span><span class="p">,</span> <span class="s2">&quot;genbank&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">record</span>
+
+<span class="ne">NameError</span>: name &#39;genbank_path&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -839,7 +876,7 @@ SSAC
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9609
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>184
 </pre></div>
 </div>
 </div>
@@ -851,7 +888,7 @@ SSAC
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>41
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
 </pre></div>
 </div>
 </div>
@@ -864,18 +901,12 @@ SSAC
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type: CDS
-location: [4342:4780](+)
-qualifiers:
-    Key: codon_start, Value: [&#39;1&#39;]
-    Key: db_xref, Value: [&#39;GI:45478716&#39;, &#39;GeneID:2767712&#39;]
-    Key: gene, Value: [&#39;pim&#39;]
-    Key: locus_tag, Value: [&#39;YP_pPCP05&#39;]
-    Key: note, Value: [&#39;similar to many previously sequenced pesticin immunity protein entries of Yersinia pestis plasmid pPCP, e.g. gi| 16082683|,ref|NP_395230.1| (NC_003132) , gi|1200166|emb|CAA90861.1| (Z54145 ) , gi|1488655| emb|CAA63439.1| (X92856) , gi|2996219|gb|AAC62543.1| (AF053945) , and gi|5763814|emb|CAB531 67.1| (AL109969)&#39;]
-    Key: product, Value: [&#39;pesticin immunity protein&#39;]
-    Key: protein_id, Value: [&#39;NP_995571.1&#39;]
-    Key: transl_table, Value: [&#39;11&#39;]
-    Key: translation, Value: [&#39;MGGGMISKLFCLALIFLSSSGLAEKNTYTAKDILQNLELNTFGNSLSHGIYGKQTTFKQTEFTNIKSNTKKHIALINKDNSWMISLKILGIKRDEYTVCFEDFSLIRPPTYVAIHPLLIKKVKSGNFIVVKEIKKSIPGCTVYYH&#39;]
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">24</span><span class="o">-</span><span class="mi">11327</span><span class="n">fb6989e</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">features</span><span class="p">[</span><span class="mi">21</span><span class="p">])</span>
+
+<span class="ne">IndexError</span>: list index out of range
 </pre></div>
 </div>
 </div>
@@ -890,10 +921,10 @@ qualifiers:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>500
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SeqRecord(seq=Seq(&#39;ATAAATAGATTATTCCAAATAATTTATTTATGTAAGAACAGGATGGGAGGGGGA...TTA&#39;), id=&#39;NC_005816.1&#39;, name=&#39;NC_005816&#39;, description=&#39;Yersinia pestis biovar Microtus str. 91001 plasmid pPCP1, complete sequence&#39;, dbxrefs=[])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SeqRecord(seq=Seq(&#39;&#39;), id=&#39;gi|14150838|gb|AAK54648.1|AF376133_1&#39;, name=&#39;&lt;unknown name&gt;&#39;, description=&#39;chalcone synthase [Cucumis sativus]&#39;, dbxrefs=[])
 </pre></div>
 </div>
 </div>
@@ -905,8 +936,7 @@ qualifiers:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[SeqFeature(FeatureLocation(ExactPosition(42), ExactPosition(480), strand=1), type=&#39;gene&#39;),
- SeqFeature(FeatureLocation(ExactPosition(42), ExactPosition(480), strand=1), type=&#39;CDS&#39;)]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
 </div>
@@ -918,12 +948,12 @@ qualifiers:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type: gene
-location: [42:480](+)
-qualifiers:
-    Key: db_xref, Value: [&#39;GeneID:2767712&#39;]
-    Key: gene, Value: [&#39;pim&#39;]
-    Key: locus_tag, Value: [&#39;YP_pPCP05&#39;]
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">27</span><span class="o">-</span><span class="mi">604</span><span class="n">afc37f838</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span> <span class="n">sub_record</span><span class="o">.</span><span class="n">features</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
+
+<span class="ne">IndexError</span>: list index out of range
 </pre></div>
 </div>
 </div>
@@ -935,18 +965,12 @@ qualifiers:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type: CDS
-location: [42:480](+)
-qualifiers:
-    Key: codon_start, Value: [&#39;1&#39;]
-    Key: db_xref, Value: [&#39;GI:45478716&#39;, &#39;GeneID:2767712&#39;]
-    Key: gene, Value: [&#39;pim&#39;]
-    Key: locus_tag, Value: [&#39;YP_pPCP05&#39;]
-    Key: note, Value: [&#39;similar to many previously sequenced pesticin immunity protein entries of Yersinia pestis plasmid pPCP, e.g. gi| 16082683|,ref|NP_395230.1| (NC_003132) , gi|1200166|emb|CAA90861.1| (Z54145 ) , gi|1488655| emb|CAA63439.1| (X92856) , gi|2996219|gb|AAC62543.1| (AF053945) , and gi|5763814|emb|CAB531 67.1| (AL109969)&#39;]
-    Key: product, Value: [&#39;pesticin immunity protein&#39;]
-    Key: protein_id, Value: [&#39;NP_995571.1&#39;]
-    Key: transl_table, Value: [&#39;11&#39;]
-    Key: translation, Value: [&#39;MGGGMISKLFCLALIFLSSSGLAEKNTYTAKDILQNLELNTFGNSLSHGIYGKQTTFKQTEFTNIKSNTKKHIALINKDNSWMISLKILGIKRDEYTVCFEDFSLIRPPTYVAIHPLLIKKVKSGNFIVVKEIKKSIPGCTVYYH&#39;]
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">28</span><span class="o">-</span><span class="mi">94</span><span class="n">a7ce3e53f9</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span> <span class="n">sub_record</span><span class="o">.</span><span class="n">features</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span>
+
+<span class="ne">IndexError</span>: list index out of range
 </pre></div>
 </div>
 </div>
@@ -958,7 +982,7 @@ qualifiers:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Yersinia pestis biovar Microtus str. 91001 plasmid pPCP1, complete sequence&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;chalcone synthase [Cucumis sativus]&#39;
 </pre></div>
 </div>
 </div>
@@ -970,7 +994,7 @@ qualifiers:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;NC_005816&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;&lt;unknown name&gt;&#39;
 </pre></div>
 </div>
 </div>
@@ -988,7 +1012,14 @@ qualifiers:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SeqRecord(seq=Seq(&#39;TGTAACGAACGGTGCAATAGTGATCCACACCCAACGCCTGAAATCAGATCCAGG...CTG&#39;), id=&#39;NC_005816.1&#39;, name=&#39;NC_005816&#39;, description=&#39;Yersinia pestis biovar Microtus str. 91001 plasmid pPCP1, complete sequence&#39;, dbxrefs=[&#39;Project:58037&#39;])
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">31</span><span class="o">-</span><span class="mi">0</span><span class="n">af101ee1bc0</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">SeqIO</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">record</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">genbank_path</span><span class="p">,</span> <span class="s2">&quot;genbank&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">record</span>
+
+<span class="ne">NameError</span>: name &#39;genbank_path&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1000,7 +1031,7 @@ qualifiers:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SeqRecord(seq=Seq(&#39;TGTAACGAACGGTGCAATAGTGATCCACACCCAACGCCTGAAATCAGATCCAGG...CTG&#39;), id=&#39;NC_005816.1&#39;, name=&#39;NC_005816&#39;, description=&#39;Yersinia pestis biovar Microtus str. 91001 plasmid pPCP1, complete sequence&#39;, dbxrefs=[&#39;Project:58037&#39;])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SeqRecord(seq=Seq(&#39;MMYQQGCFAGGTVLRLAKDLAENNRGARVLVVCSEITAVTFRGPSETHLDSMVG...SAC&#39;), id=&#39;gi|14150838|gb|AAK54648.1|AF376133_1&#39;, name=&#39;&lt;unknown name&gt;&#39;, description=&#39;chalcone synthase [Cucumis sativus]&#39;, dbxrefs=[])
 </pre></div>
 </div>
 </div>
@@ -1012,7 +1043,7 @@ qualifiers:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SeqRecord(seq=Seq(&#39;GATACGCAGTCATATTTTTTACACAATTCTCTAATCCCGACAAGGTCGTAGGTC...CTG&#39;), id=&#39;NC_005816.1&#39;, name=&#39;NC_005816&#39;, description=&#39;Yersinia pestis biovar Microtus str. 91001 plasmid pPCP1, complete sequence&#39;, dbxrefs=[])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SeqRecord(seq=Seq(&#39;&#39;), id=&#39;gi|14150838|gb|AAK54648.1|AF376133_1&#39;, name=&#39;&lt;unknown name&gt;&#39;, description=&#39;chalcone synthase [Cucumis sativus]&#39;, dbxrefs=[])
 </pre></div>
 </div>
 </div>
@@ -1024,7 +1055,7 @@ qualifiers:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SeqRecord(seq=Seq(&#39;TGTAACGAACGGTGCAATAGTGATCCACACCCAACGCCTGAAATCAGATCCAGG...GGA&#39;), id=&#39;NC_005816.1&#39;, name=&#39;NC_005816&#39;, description=&#39;Yersinia pestis biovar Microtus str. 91001 plasmid pPCP1, complete sequence&#39;, dbxrefs=[])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SeqRecord(seq=Seq(&#39;MMYQQGCFAGGTVLRLAKDLAENNRGARVLVVCSEITAVTFRGPSETHLDSMVG...SAC&#39;), id=&#39;gi|14150838|gb|AAK54648.1|AF376133_1&#39;, name=&#39;&lt;unknown name&gt;&#39;, description=&#39;chalcone synthase [Cucumis sativus]&#39;, dbxrefs=[])
 </pre></div>
 </div>
 </div>
@@ -1036,7 +1067,7 @@ qualifiers:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>41
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
 </pre></div>
 </div>
 </div>
@@ -1051,7 +1082,7 @@ qualifiers:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SeqRecord(seq=Seq(&#39;GATACGCAGTCATATTTTTTACACAATTCTCTAATCCCGACAAGGTCGTAGGTC...GGA&#39;), id=&#39;NC_005816.1&#39;, name=&#39;NC_005816&#39;, description=&#39;Yersinia pestis biovar Microtus str. 91001 plasmid pPCP1, complete sequence&#39;, dbxrefs=[])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SeqRecord(seq=Seq(&#39;MMYQQGCFAGGTVLRLAKDLAENNRGARVLVVCSEITAVTFRGPSETHLDSMVG...SAC&#39;), id=&#39;gi|14150838|gb|AAK54648.1|AF376133_1&#39;, name=&#39;&lt;unknown name&gt;&#39;, description=&#39;chalcone synthase [Cucumis sativus]&#39;, dbxrefs=[])
 </pre></div>
 </div>
 </div>
@@ -1063,7 +1094,7 @@ qualifiers:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>40
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
 </pre></div>
 </div>
 </div>
@@ -1109,9 +1140,9 @@ qualifiers:
     <div class="container">
       <p>
         
-          By The Jupyter Book community<br/>
+          By Christian Kruse<br/>
         
-            &copy; Copyright 2020.<br/>
+            &copy; Copyright 2021.<br/>
       </p>
     </div>
   </footer>
