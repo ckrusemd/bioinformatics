@@ -23,7 +23,7 @@ print(Bio.__version__)
 
 # # 2.2 Working with sequences
 
-# In[4]:
+# In[3]:
 
 
 from Bio.Seq import Seq
@@ -31,13 +31,13 @@ my_seq = Seq("AGTACACTGGT")
 my_seq
 
 
-# In[11]:
+# In[4]:
 
 
 my_seq.complement()
 
 
-# In[12]:
+# In[5]:
 
 
 my_seq.reverse_complement()
@@ -49,7 +49,7 @@ my_seq.reverse_complement()
 
 # ## Download FASTA files
 
-# In[42]:
+# In[6]:
 
 
 import wget
@@ -66,7 +66,7 @@ import os
 os.listdir(path)
 
 
-# In[46]:
+# In[7]:
 
 
 from pathlib import Path
@@ -77,7 +77,7 @@ fasta_path
 
 # ## Review
 
-# In[49]:
+# In[8]:
 
 
 from Bio import SeqIO
