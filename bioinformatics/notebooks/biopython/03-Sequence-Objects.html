@@ -1,0 +1,1239 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chapter 3: Sequence objects &#8212; My Jupyter Book</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Chapter 4: Sequence annotation objects" href="04-Sequence-Annotation-Objects.html" />
+    <link rel="prev" title="Chapter 2: Quick Start" href="02-Quick-Start.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Bioinformatics
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Biopython
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="02-Quick-Start.html">
+   Chapter 2: Quick Start
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Chapter 3: Sequence objects
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04-Sequence-Annotation-Objects.html">
+   Chapter 4: Sequence annotation objects
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/bioinformatics/notebooks/biopython/03-Sequence-Objects.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/bioinformatics/notebooks/biopython/03-Sequence-Objects.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Chapter 3: Sequence objects
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sequences-act-like-strings">
+     3.1 Sequences act like strings
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#count-elements">
+       Count elements
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#gc">
+         GC%
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#slicing-a-sequence">
+     3.2 Slicing a sequence
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#concatenating-or-adding-sequences">
+   3.4 Concatenating or adding sequences
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#loop-based-concat">
+     Loop-based concat
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#join-based-concat">
+     Join-based concat
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#todo-not-working-but-code-shows-this-example">
+     TODO: Not working but code shows this example?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nucleotide-sequences-and-reverse-complements">
+     3.6 Nucleotide sequences and (reverse) complements
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#transcription">
+   3.7 Transcription
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#transcribe">
+     Transcribe
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#dna-coding-strand-transcription">
+       DNA Coding Strand transcription
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#template-strand-transcription">
+       Template Strand transcription
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#mrna-to-dna">
+       mRNA to DNA
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#translation">
+   3.8 Translation
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#translate-from-mrna">
+     Translate from mRNA
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#translate-from-coding-dna">
+     Translate from coding DNA
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#take-into-account-the-dna-type">
+       Take into account the DNA type
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ncbi-table-number-instead-of-using-vertebrate-mitochondrial">
+       NCBI table number (instead of using Vertebrate Mitochondrial)
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#to-stop-codon">
+       To Stop Codon
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#complete-coding-sequence-cds">
+     Complete coding sequence CDS
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#and-it-will-throw-an-exception-if-wrong">
+       And it will throw an exception if wrong.
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#translation-tables">
+   3.9 Translation Tables
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-find-codons">
+     Example: Find Codons
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comparing-seq-objects">
+   3.10 Comparing Seq objects
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mutableseq-objects">
+   3.11 MutableSeq objects
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#back-to-immutable">
+     Back to immutable
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unknownseq-objects">
+   3.12 UnknownSeq objects
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="chapter-3-sequence-objects">
+<h1>Chapter 3: Sequence objects<a class="headerlink" href="#chapter-3-sequence-objects" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Sequences are essentially strings of letters like AGTACACTGGT, which seems very natural since this is the most common way that sequences are seen in biological le formats</p></li>
+<li><p>The most important dierence between Seq objects and standard Python strings is they have dierent methods. Although the Seq object supports many of the same methods as a plain string, its translate() method diers by doing biological translation, and there are also additional biologically relevant methods like reverse_complement().</p></li>
+</ul>
+<div class="section" id="sequences-act-like-strings">
+<h2>3.1 Sequences act like strings<a class="headerlink" href="#sequences-act-like-strings" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
+<span class="n">my_seq</span> <span class="o">=</span> <span class="n">Seq</span><span class="p">(</span><span class="s2">&quot;GATCG&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">letter</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">my_seq</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%i</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">letter</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span> <span class="s2">&quot;First element: &quot;</span> <span class="o">+</span> <span class="n">my_seq</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s2">&quot;Total elements: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span> <span class="nb">len</span><span class="p">(</span> <span class="n">my_seq</span> <span class="p">)</span> <span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 G
+1 A
+2 T
+3 C
+4 G
+First element: G
+Total elements: 5
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="count-elements">
+<h3>Count elements<a class="headerlink" href="#count-elements" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
+<span class="n">my_seq</span> <span class="o">=</span> <span class="n">Seq</span><span class="p">(</span><span class="s2">&quot;GATCGATGGGCCTATATAGGATCGAAAATCGC&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">my_seq</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>32
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_seq</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;G&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_seq</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;GA&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="gc">
+<h4>GC%<a class="headerlink" href="#gc" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">100</span> <span class="o">*</span> <span class="nb">float</span><span class="p">(</span><span class="n">my_seq</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;G&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">my_seq</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">))</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">my_seq</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>46.875
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.SeqUtils</span> <span class="kn">import</span> <span class="n">GC</span>
+<span class="n">GC</span><span class="p">(</span> <span class="n">my_seq</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>46.875
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="slicing-a-sequence">
+<h2>3.2 Slicing a sequence<a class="headerlink" href="#slicing-a-sequence" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_seq</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">12</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Seq(&#39;GATGGGCC&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_seq</span><span class="p">[</span><span class="mi">0</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Seq(&#39;GTGTGCTTTGACAATG&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reverse</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">my_seq</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">my_seq</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GATCGATGGGCCTATATAGGATCGAAAATCGC
+CGCTAAAAGCTAGGATATATCCGGGTAGCTAG
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Back to string:</span>
+<span class="nb">str</span><span class="p">(</span><span class="n">my_seq</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;GATCGATGGGCCTATATAGGATCGAAAATCGC&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="concatenating-or-adding-sequences">
+<h1>3.4 Concatenating or adding sequences<a class="headerlink" href="#concatenating-or-adding-sequences" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
+<span class="n">seq_1</span> <span class="o">=</span> <span class="n">Seq</span><span class="p">(</span><span class="s2">&quot;ATATAGG&quot;</span><span class="p">)</span>
+<span class="n">seq_2</span> <span class="o">=</span> <span class="n">Seq</span><span class="p">(</span><span class="s2">&quot;ACGT&quot;</span><span class="p">)</span>
+<span class="n">seq_1</span> <span class="o">+</span> <span class="n">seq_2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Seq(&#39;ATATAGGACGT&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="loop-based-concat">
+<h2>Loop-based concat<a class="headerlink" href="#loop-based-concat" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
+<span class="n">list_of_seqs</span> <span class="o">=</span> <span class="p">[</span><span class="n">Seq</span><span class="p">(</span><span class="s2">&quot;ACGT&quot;</span><span class="p">),</span> <span class="n">Seq</span><span class="p">(</span><span class="s2">&quot;AACC&quot;</span><span class="p">),</span> <span class="n">Seq</span><span class="p">(</span><span class="s2">&quot;GGTT&quot;</span><span class="p">)]</span>
+<span class="n">concatenated</span> <span class="o">=</span> <span class="n">Seq</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">list_of_seqs</span><span class="p">:</span>
+    <span class="n">concatenated</span> <span class="o">+=</span> <span class="n">s</span>
+<span class="n">concatenated</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Seq(&#39;ACGTAACCGGTT&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="join-based-concat">
+<h2>Join-based concat<a class="headerlink" href="#join-based-concat" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="todo-not-working-but-code-shows-this-example">
+<h2>TODO: Not working but code shows this example?<a class="headerlink" href="#todo-not-working-but-code-shows-this-example" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
+<span class="n">concatenated</span> <span class="o">=</span> <span class="n">Seq</span><span class="p">(</span><span class="s1">&#39;NNNNN&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">Seq</span><span class="p">(</span><span class="s2">&quot;AAA&quot;</span><span class="p">)])</span>
+<span class="n">concatenated</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Seq(&#39;AAA&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
+<span class="n">contigs</span> <span class="o">=</span> <span class="p">[</span><span class="n">Seq</span><span class="p">(</span><span class="s2">&quot;ATG&quot;</span><span class="p">),</span> <span class="n">Seq</span><span class="p">(</span><span class="s2">&quot;ATCCCG&quot;</span><span class="p">),</span> <span class="n">Seq</span><span class="p">(</span><span class="s2">&quot;TTGCA&quot;</span><span class="p">)]</span>
+<span class="n">spacer</span> <span class="o">=</span> <span class="n">Seq</span><span class="p">(</span><span class="s2">&quot;N&quot;</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">spacer</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">contigs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Seq(&#39;ATGNNNNNNNNNNATCCCGNNNNNNNNNNTTGCA&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="nucleotide-sequences-and-reverse-complements">
+<h2>3.6 Nucleotide sequences and (reverse) complements<a class="headerlink" href="#nucleotide-sequences-and-reverse-complements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>DNA: A=T, G≡C</p></li>
+<li><p>RNA: A=U, G≡C</p></li>
+<li><p>Nucleic acid sequence of bases that can form a double- stranded structure by matching base pairs. For example, the <strong>complementary sequence</strong> to C-A-T-G (where each letter stands for one of the bases in DNA) is G-T-A-C</p></li>
+<li><p>The <strong>reverse complement</strong> of a DNA sequence is formed by reversing the letters, interchanging A and T and interchanging C and G. Thus the reverse complement of ACCTGAG is CTCAGGT.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
+<span class="n">my_seq</span> <span class="o">=</span> <span class="n">Seq</span><span class="p">(</span><span class="s2">&quot;GATCGATGGGCCTATATAGGATCGAAAATCGC&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">my_seq</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">my_seq</span><span class="o">.</span><span class="n">complement</span><span class="p">()</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">my_seq</span><span class="o">.</span><span class="n">reverse_complement</span><span class="p">()</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GATCGATGGGCCTATATAGGATCGAAAATCGC
+CTAGCTACCCGGATATATCCTAGCTTTTAGCG
+GCGATTTTCGATCCTATATAGGCCCATCGATC
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="transcription">
+<h1>3.7 Transcription<a class="headerlink" href="#transcription" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
+<span class="n">coding_dna</span> <span class="o">=</span> <span class="n">Seq</span><span class="p">(</span><span class="s2">&quot;ATGGCCATTGTAATGGGCCGCTGAAAGGGTGCCCGATAG&quot;</span><span class="p">)</span>
+<span class="n">template_dna</span> <span class="o">=</span> <span class="n">coding_dna</span><span class="o">.</span><span class="n">reverse_complement</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;5&#39; - &quot;</span> <span class="o">+</span> <span class="n">coding_dna</span> <span class="o">+</span> <span class="s2">&quot; - 3&#39;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3&#39; - &quot;</span> <span class="o">+</span> <span class="n">template_dna</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot; - 5&#39;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5&#39; - ATGGCCATTGTAATGGGCCGCTGAAAGGGTGCCCGATAG - 3&#39;
+3&#39; - TACCGGTAACATTACCCGGCGACTTTCCCACGGGCTATC - 5&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="transcribe">
+<h2>Transcribe<a class="headerlink" href="#transcribe" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="dna-coding-strand-transcription">
+<h3>DNA Coding Strand transcription<a class="headerlink" href="#dna-coding-strand-transcription" title="Permalink to this headline">¶</a></h3>
+<p>“As you can see, all this does is to replace T by U.”</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coding_dna</span><span class="o">.</span><span class="n">transcribe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Seq(&#39;AUGGCCAUUGUAAUGGGCCGCUGAAAGGGUGCCCGAUAG&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coding_dna</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Seq(&#39;ATGGCCATTGTAATGGGCCGCTGAAAGGGTGCCCGATAG&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="template-strand-transcription">
+<h3>Template Strand transcription<a class="headerlink" href="#template-strand-transcription" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">template_dna</span><span class="o">.</span><span class="n">reverse_complement</span><span class="p">()</span><span class="o">.</span><span class="n">transcribe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Seq(&#39;AUGGCCAUUGUAAUGGGCCGCUGAAAGGGUGCCCGAUAG&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="mrna-to-dna">
+<h3>mRNA to DNA<a class="headerlink" href="#mrna-to-dna" title="Permalink to this headline">¶</a></h3>
+<p>“Again, this is a simple U -&gt; T substitution:”</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
+<span class="n">messenger_rna</span> <span class="o">=</span> <span class="n">Seq</span><span class="p">(</span><span class="s2">&quot;AUGGCCAUUGUAAUGGGCCGCUGAAAGGGUGCCCGAUAG&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">messenger_rna</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">messenger_rna</span><span class="o">.</span><span class="n">back_transcribe</span><span class="p">()</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AUGGCCAUUGUAAUGGGCCGCUGAAAGGGUGCCCGAUAG
+ATGGCCATTGTAATGGGCCGCTGAAAGGGTGCCCGATAG
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="translation">
+<h1>3.8 Translation<a class="headerlink" href="#translation" title="Permalink to this headline">¶</a></h1>
+<p>Translation is done from NCBI coding schemes.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi">NCBI Coding Scheme</a></p></li>
+</ul>
+<div class="section" id="translate-from-mrna">
+<h2>Translate from mRNA<a class="headerlink" href="#translate-from-mrna" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
+<span class="n">messenger_rna</span> <span class="o">=</span> <span class="n">Seq</span><span class="p">(</span><span class="s2">&quot;AUGGCCAUUGUAAUGGGCCGCUGAAAGGGUGCCCGAUAG&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">messenger_rna</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">messenger_rna</span><span class="o">.</span><span class="n">translate</span><span class="p">()</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AUGGCCAUUGUAAUGGGCCGCUGAAAGGGUGCCCGAUAG
+MAIVMGR*KGAR*
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="translate-from-coding-dna">
+<h2>Translate from coding DNA<a class="headerlink" href="#translate-from-coding-dna" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
+<span class="n">coding_dna</span> <span class="o">=</span> <span class="n">Seq</span><span class="p">(</span><span class="s2">&quot;ATGGCCATTGTAATGGGCCGCTGAAAGGGTGCCCGATAG&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">coding_dna</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">coding_dna</span><span class="o">.</span><span class="n">translate</span><span class="p">()</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ATGGCCATTGTAATGGGCCGCTGAAAGGGTGCCCGATAG
+MAIVMGR*KGAR*
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="take-into-account-the-dna-type">
+<h3>Take into account the DNA type<a class="headerlink" href="#take-into-account-the-dna-type" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="n">coding_dna</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">table</span><span class="o">=</span><span class="s2">&quot;Vertebrate Mitochondrial&quot;</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MAIVMGRWKGAR*
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ncbi-table-number-instead-of-using-vertebrate-mitochondrial">
+<h3>NCBI table number (instead of using Vertebrate Mitochondrial)<a class="headerlink" href="#ncbi-table-number-instead-of-using-vertebrate-mitochondrial" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="n">coding_dna</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">table</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MAIVMGRWKGAR*
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="to-stop-codon">
+<h3>To Stop Codon<a class="headerlink" href="#to-stop-codon" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="n">coding_dna</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">to_stop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MAIVMGR
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="n">coding_dna</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">to_stop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">table</span><span class="o">=</span><span class="s2">&quot;Vertebrate Mitochondrial&quot;</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MAIVMGRWKGAR
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="complete-coding-sequence-cds">
+<h2>Complete coding sequence CDS<a class="headerlink" href="#complete-coding-sequence-cds" title="Permalink to this headline">¶</a></h2>
+<p>Telling BioPython to use a CDS means the coding becomes <strong>Methionine</strong> instead of <strong>Valine</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
+<span class="n">gene</span> <span class="o">=</span> <span class="n">Seq</span><span class="p">(</span> <span class="s2">&quot;GTGAAAAAGATGCAATCTATCGTACTCGCACTTTCCCTGGTTCTGGTCGCTCCCATGGCA&quot;</span>
+            <span class="s2">&quot;GCACAGGCTGCGGAAATTACGTTAGTCCCGTCAGTAAAATTACAGATAGGCGATCGTGAT&quot;</span>
+            <span class="s2">&quot;AATCGTGGCTATTACTGGGATGGAGGTCACTGGCGCGACCACGGCTGGTGGAAACAACAT&quot;</span>
+            <span class="s2">&quot;TATGAATGGCGAGGCAATCGCTGGCACCTACACGGACCGCCGCCACCGCCGCGCCACCAT&quot;</span>
+            <span class="s2">&quot;AAGAAAGCTCCTCATGATCATCACGGCGGTCATGGTCCAGGCAAACATCACCGCTAA&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gene</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">table</span><span class="o">=</span><span class="s2">&quot;Bacterial&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Seq(&#39;VKKMQSIVLALSLVLVAPMAAQAAEITLVPSVKLQIGDRDNRGYYWDGGHWRDH...HR*&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gene</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">table</span><span class="o">=</span><span class="s2">&quot;Bacterial&quot;</span><span class="p">,</span> <span class="n">cds</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Seq(&#39;MKKMQSIVLALSLVLVAPMAAQAAEITLVPSVKLQIGDRDNRGYYWDGGHWRDH...HHR&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="and-it-will-throw-an-exception-if-wrong">
+<h3>And it will throw an exception if wrong.<a class="headerlink" href="#and-it-will-throw-an-exception-if-wrong" title="Permalink to this headline">¶</a></h3>
+<p>“Sequence length 296 is not a multiple of three”</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gene</span> <span class="o">=</span> <span class="n">Seq</span><span class="p">(</span> <span class="s2">&quot;GTGAAAAAGATGCAATCTATCGTACTCGCACTTTCCCTGGTTCTGGTCGCTCCCATGGCA&quot;</span>
+            <span class="s2">&quot;GCACAGGCTGCGGAAATTACGTTAGTCCCGTCACTAAAATTACAGATAGGCGATCGTGAT&quot;</span>
+            <span class="s2">&quot;AATCGTGGCTATTACTGGGATGGAGGTCACTGGCGCGACCACGGCTGGTGGAAACAACAT&quot;</span>
+            <span class="s2">&quot;TATGAATGGCGAGGCAGTCGCTGGCACCTACACGGACCGCCGCCACCGCCCGCCACCAT&quot;</span>
+            <span class="s2">&quot;AAGAAAGCTCCTCATGATCATCACGGCGGTCATGGTCCAGGCAAACATCACCGCTAA&quot;</span><span class="p">)</span>
+<span class="n">gene</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">table</span><span class="o">=</span><span class="s2">&quot;Bacterial&quot;</span><span class="p">,</span> <span class="n">cds</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TranslationError</span><span class="g g-Whitespace">                          </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">31</span><span class="o">-</span><span class="n">fda024f2884f</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>             <span class="s2">&quot;TATGAATGGCGAGGCAGTCGCTGGCACCTACACGGACCGCCGCCACCGCCCGCCACCAT&quot;</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>             <span class="s2">&quot;AAGAAAGCTCCTCATGATCATCACGGCGGTCATGGTCCAGGCAAACATCACCGCTAA&quot;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">gene</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">table</span><span class="o">=</span><span class="s2">&quot;Bacterial&quot;</span><span class="p">,</span> <span class="n">cds</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.10/x64/lib/python3.8/site-packages/Bio/Seq.py</span> in <span class="ni">translate</span><span class="nt">(self, table, stop_symbol, to_stop, cds, gap)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1020</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1021</span>         <span class="k">return</span> <span class="n">Seq</span><span class="p">(</span>
+<span class="ne">-&gt; </span><span class="mi">1022</span>             <span class="n">_translate_str</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="n">codon_table</span><span class="p">,</span> <span class="n">stop_symbol</span><span class="p">,</span> <span class="n">to_stop</span><span class="p">,</span> <span class="n">cds</span><span class="p">,</span> <span class="n">gap</span><span class="o">=</span><span class="n">gap</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1023</span>         <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1024</span> 
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.10/x64/lib/python3.8/site-packages/Bio/Seq.py</span> in <span class="ni">_translate_str</span><span class="nt">(sequence, table, stop_symbol, to_stop, cds, pos_stop, gap)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2320</span>             <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2321</span>         <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2322</span>             <span class="k">raise</span> <span class="n">CodonTable</span><span class="o">.</span><span class="n">TranslationError</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">2323</span>                 <span class="sa">f</span><span class="s2">&quot;Sequence length </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> is not a multiple of three&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">2324</span>             <span class="p">)</span>
+
+<span class="ne">TranslationError</span>: Sequence length 296 is not a multiple of three
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="translation-tables">
+<h1>3.9 Translation Tables<a class="headerlink" href="#translation-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Internally these use codon table objects derived from the NCBI information at <span class="xref myst">gc.prt</span></p></li>
+<li><p>Also shown on https: <span class="xref myst">wprintgc.cgi</span></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.Data</span> <span class="kn">import</span> <span class="n">CodonTable</span>
+<span class="n">standard_table</span> <span class="o">=</span> <span class="n">CodonTable</span><span class="o">.</span><span class="n">unambiguous_dna_by_name</span><span class="p">[</span><span class="s2">&quot;Standard&quot;</span><span class="p">]</span>
+<span class="n">mito_table</span> <span class="o">=</span> <span class="n">CodonTable</span><span class="o">.</span><span class="n">unambiguous_dna_by_name</span><span class="p">[</span><span class="s2">&quot;Vertebrate Mitochondrial&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">standard_table</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Table 1 Standard, SGC0
+
+  |  T      |  C      |  A      |  G      |
+--+---------+---------+---------+---------+--
+T | TTT F   | TCT S   | TAT Y   | TGT C   | T
+T | TTC F   | TCC S   | TAC Y   | TGC C   | C
+T | TTA L   | TCA S   | TAA Stop| TGA Stop| A
+T | TTG L(s)| TCG S   | TAG Stop| TGG W   | G
+--+---------+---------+---------+---------+--
+C | CTT L   | CCT P   | CAT H   | CGT R   | T
+C | CTC L   | CCC P   | CAC H   | CGC R   | C
+C | CTA L   | CCA P   | CAA Q   | CGA R   | A
+C | CTG L(s)| CCG P   | CAG Q   | CGG R   | G
+--+---------+---------+---------+---------+--
+A | ATT I   | ACT T   | AAT N   | AGT S   | T
+A | ATC I   | ACC T   | AAC N   | AGC S   | C
+A | ATA I   | ACA T   | AAA K   | AGA R   | A
+A | ATG M(s)| ACG T   | AAG K   | AGG R   | G
+--+---------+---------+---------+---------+--
+G | GTT V   | GCT A   | GAT D   | GGT G   | T
+G | GTC V   | GCC A   | GAC D   | GGC G   | C
+G | GTA V   | GCA A   | GAA E   | GGA G   | A
+G | GTG V   | GCG A   | GAG E   | GGG G   | G
+--+---------+---------+---------+---------+--
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">mito_table</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Table 2 Vertebrate Mitochondrial, SGC1
+
+  |  T      |  C      |  A      |  G      |
+--+---------+---------+---------+---------+--
+T | TTT F   | TCT S   | TAT Y   | TGT C   | T
+T | TTC F   | TCC S   | TAC Y   | TGC C   | C
+T | TTA L   | TCA S   | TAA Stop| TGA W   | A
+T | TTG L   | TCG S   | TAG Stop| TGG W   | G
+--+---------+---------+---------+---------+--
+C | CTT L   | CCT P   | CAT H   | CGT R   | T
+C | CTC L   | CCC P   | CAC H   | CGC R   | C
+C | CTA L   | CCA P   | CAA Q   | CGA R   | A
+C | CTG L   | CCG P   | CAG Q   | CGG R   | G
+--+---------+---------+---------+---------+--
+A | ATT I(s)| ACT T   | AAT N   | AGT S   | T
+A | ATC I(s)| ACC T   | AAC N   | AGC S   | C
+A | ATA M(s)| ACA T   | AAA K   | AGA Stop| A
+A | ATG M(s)| ACG T   | AAG K   | AGG Stop| G
+--+---------+---------+---------+---------+--
+G | GTT V   | GCT A   | GAT D   | GGT G   | T
+G | GTC V   | GCC A   | GAC D   | GGC G   | C
+G | GTA V   | GCA A   | GAA E   | GGA G   | A
+G | GTG V(s)| GCG A   | GAG E   | GGG G   | G
+--+---------+---------+---------+---------+--
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="example-find-codons">
+<h2>Example: Find Codons<a class="headerlink" href="#example-find-codons" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">standard_table</span><span class="o">.</span><span class="n">stop_codons</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;TAA&#39;, &#39;TAG&#39;, &#39;TGA&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">standard_table</span><span class="o">.</span><span class="n">start_codons</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;TTG&#39;, &#39;CTG&#39;, &#39;ATG&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="n">mito_table</span><span class="o">.</span><span class="n">forward_table</span><span class="p">[</span><span class="s2">&quot;ACG&quot;</span><span class="p">]</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">mito_table</span><span class="o">.</span><span class="n">forward_table</span><span class="p">[</span><span class="s2">&quot;CCG&quot;</span><span class="p">]</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>T
+P
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="comparing-seq-objects">
+<h1>3.10 Comparing Seq objects<a class="headerlink" href="#comparing-seq-objects" title="Permalink to this headline">¶</a></h1>
+<p>As of Biopython 1.65, sequence comparison only looks at the sequence and compares like the Python string.</p>
+</div>
+<div class="section" id="mutableseq-objects">
+<h1>3.11 MutableSeq objects<a class="headerlink" href="#mutableseq-objects" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
+<span class="n">my_seq</span> <span class="o">=</span> <span class="n">Seq</span><span class="p">(</span><span class="s2">&quot;GCCATTGTAATGGGCCGCTGAAAGGGTGCCCGA&quot;</span><span class="p">)</span>
+<span class="n">my_seq</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;G&quot;</span> <span class="c1"># Throws exception</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">88</span><span class="o">-</span><span class="n">dcd04e752efa</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">my_seq</span> <span class="o">=</span> <span class="n">Seq</span><span class="p">(</span><span class="s2">&quot;GCCATTGTAATGGGCCGCTGAAAGGGTGCCCGA&quot;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">my_seq</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;G&quot;</span>
+
+<span class="ne">TypeError</span>: &#39;Seq&#39; object does not support item assignment
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mutable_seq</span> <span class="o">=</span> <span class="n">my_seq</span><span class="o">.</span><span class="n">tomutable</span><span class="p">()</span>
+<span class="n">mutable_seq</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MutableSeq(&#39;GCCATTGTAATGGGCCGCTGAAAGGGTGCCCGA&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mutable_seq</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;C&quot;</span>
+<span class="n">mutable_seq</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MutableSeq(&#39;CCCATTGTAATGGGCCGCTGAAAGGGTGCCCGA&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mutable_seq</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
+<span class="n">mutable_seq</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MutableSeq(&#39;CCCATGTAATGGGCCGCTGAAAGGGTGCCCGA&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="back-to-immutable">
+<h2>Back to immutable<a class="headerlink" href="#back-to-immutable" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">immutable_again_seq</span> <span class="o">=</span> <span class="n">mutable_seq</span><span class="o">.</span><span class="n">toseq</span><span class="p">()</span>
+<span class="n">immutable_again_seq</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Seq(&#39;CCCATGTAATGGGCCGCTGAAAGGGTGCCCGA&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">immutable_again_seq</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;G&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">103</span><span class="o">-</span><span class="n">d29cb47bf202</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">immutable_again_seq</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;G&quot;</span>
+
+<span class="ne">TypeError</span>: &#39;Seq&#39; object does not support item assignment
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="unknownseq-objects">
+<h1>3.12 UnknownSeq objects<a class="headerlink" href="#unknownseq-objects" title="Permalink to this headline">¶</a></h1>
+<p>A (more) memory efficient way of holding a sequence of unknown letters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">UnknownSeq</span>
+<span class="n">unk</span> <span class="o">=</span> <span class="n">UnknownSeq</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">unk</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>????????????????????
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>DNA is commonly labeled with N</p></li>
+<li><p>Protein is commonly labeled with X</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unk_dna</span> <span class="o">=</span> <span class="n">UnknownSeq</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="n">character</span><span class="o">=</span><span class="s2">&quot;N&quot;</span><span class="p">)</span>
+<span class="n">unk_dna</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>UnknownSeq(20, character=&#39;N&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unk_protein</span> <span class="o">=</span> <span class="n">UnknownSeq</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="n">character</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+<span class="n">unk_protein</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>UnknownSeq(20, character=&#39;X&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./bioinformatics/notebooks/biopython"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="02-Quick-Start.html" title="previous page">Chapter 2: Quick Start</a>
+    <a class='right-next' id="next-link" href="04-Sequence-Annotation-Objects.html" title="next page">Chapter 4: Sequence annotation objects</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

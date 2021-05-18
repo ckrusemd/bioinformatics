@@ -1,0 +1,1128 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chapter 4: Sequence annotation objects &#8212; My Jupyter Book</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="prev" title="Chapter 3: Sequence objects" href="03-Sequence-Objects.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Bioinformatics
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Biopython
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="02-Quick-Start.html">
+   Chapter 2: Quick Start
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03-Sequence-Objects.html">
+   Chapter 3: Sequence objects
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Chapter 4: Sequence annotation objects
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/bioinformatics/notebooks/biopython/04-Sequence-Annotation-Objects.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/bioinformatics/notebooks/biopython/04-Sequence-Annotation-Objects.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Chapter 4: Sequence annotation objects
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-seqrecord-object">
+     4.1 The SeqRecord object
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-a-seqrecord">
+     4.2 Creating a SeqRecord
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#seqrecord-objects-from-fasta-files">
+     4.2.2 SeqRecord objects from FASTA files
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#seqrecord-objects-from-genbank-files">
+     4.2.3 SeqRecord objects from GenBank files
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-location-and-position-objects">
+   4.3 Feature, location and position objects
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#seqfeature-objects">
+     4.3.1 SeqFeature objects
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#positions-and-locations">
+     4.3.2 Positions and locations
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#featurelocation-object">
+       4.3.2.1 FeatureLocation object
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#compoundlocation-object">
+       4.3.2.2 CompoundLocation object
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#fuzzy-positions">
+       4.3.2.3 Fuzzy Positions
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#location-testing">
+       4.3.2.4 Location testing
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sequence-described-by-a-feature-or-location">
+     4.3.3 Sequence described by a feature or location
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comparison-and-differences">
+   4.4 Comparison (and differences)
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   4.5 References
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-format-method">
+   4.6 The format method
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#slicing-a-seqrecord">
+   4.7 Slicing a SeqRecord
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adding-seqrecord-objects">
+   4.8 Adding SeqRecord objects
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#shifting">
+     Shifting
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reverse-complementing-seqrecord-objects">
+   4.9 Reverse-complementing SeqRecord objects
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="chapter-4-sequence-annotation-objects">
+<h1>Chapter 4: Sequence annotation objects<a class="headerlink" href="#chapter-4-sequence-annotation-objects" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Chapter 3 introduced the sequence classes. Immediately above the Seq class is the Sequence Record or <strong>SeqRecord class</strong>, defined in the Bio.SeqRecord module.</p></li>
+<li><p>This class allows higher level features such as identiers and features (as SeqFeature objects) to be associated with the sequence, and is used throughout the sequence input/output interface Bio.SeqIO described fully in Chapter 5.</p></li>
+</ul>
+<div class="section" id="the-seqrecord-object">
+<h2>4.1 The SeqRecord object<a class="headerlink" href="#the-seqrecord-object" title="Permalink to this headline">¶</a></h2>
+<p>The SeqRecord (Sequence Record) class is dened in the Bio.SeqRecord module. This class allows higher level features such as identiers and features to be associated with a sequence (see Chapter 3), and is the basic data type for the Bio.SeqIO sequence input/output interface (see Chapter 5).</p>
+<p>** The SeqRecord class itself is quite simple, and oers the following information as attributes:**</p>
+<ul class="simple">
+<li><p><strong>.seq</strong> { The sequence itself, typically a Seq object.</p></li>
+<li><p><strong>.id</strong> { The primary ID used to identify the sequence { a string. In most cases this is something like an accession number.</p></li>
+<li><p><strong>.name</strong> { A \common” name/id for the sequence { a string. In some cases this will be the same as the accession number, but it could also be a clone name. I think of this as being analogous to the LOCUS id in a GenBank record.</p></li>
+<li><p><strong>.description</strong> { A human readable description or expressive name for the sequence { a string.</p></li>
+<li><p><strong>.letter_annotations</strong> { Holds per-letter-annotations using a (restricted) dictionary of additional information about the letters in the sequence. The keys are the name of the information, and the information is contained in the value as a Python sequence (i.e. a list, tuple or string) with the same length as the sequence itself. This is often used for quality scores (e.g. Section 20.1.6) or secondary structure information (e.g. from Stockholm/PFAM alignment les).</p></li>
+<li><p><strong>.annotations</strong> { A dictionary of additional information about the sequence. The keys are the name of
+the information, and the information is contained in the value. This allows the addition of more
+\unstructured” information to the sequence.</p></li>
+<li><p><strong>.features</strong> { A list of SeqFeature objects with more structured information about the features on a sequence
+(e.g. position of genes on a genome, or domains on a protein sequence). The structure of sequence
+features is described below in Section 4.3.</p></li>
+<li><p><strong>.dbxrefs</strong> - A list of database cross-references as strings.</p></li>
+</ul>
+</div>
+<div class="section" id="creating-a-seqrecord">
+<h2>4.2 Creating a SeqRecord<a class="headerlink" href="#creating-a-seqrecord" title="Permalink to this headline">¶</a></h2>
+<p>Most commonly, you would download a sequence and read it. It is possible to generate your own sequence with meta-data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
+<span class="n">simple_seq</span> <span class="o">=</span> <span class="n">Seq</span><span class="p">(</span><span class="s2">&quot;GATC&quot;</span><span class="p">)</span>
+<span class="n">simple_seq</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Seq(&#39;GATC&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.SeqRecord</span> <span class="kn">import</span> <span class="n">SeqRecord</span>
+<span class="n">simple_seq_r</span> <span class="o">=</span> <span class="n">SeqRecord</span><span class="p">(</span><span class="n">simple_seq</span><span class="p">)</span>
+<span class="n">simple_seq_r</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SeqRecord(seq=Seq(&#39;GATC&#39;), id=&#39;&lt;unknown id&gt;&#39;, name=&#39;&lt;unknown name&gt;&#39;, description=&#39;&lt;unknown description&gt;&#39;, dbxrefs=[])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">simple_seq_r</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="s2">&quot;AC12345&quot;</span>
+<span class="n">simple_seq_r</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;Made up sequence I wish I could write a paper about&quot;</span>
+<span class="n">simple_seq_r</span><span class="o">.</span><span class="n">annotations</span><span class="p">[</span><span class="s2">&quot;evidence&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;There is evidence&quot;</span>
+<span class="n">simple_seq_r</span><span class="o">.</span><span class="n">annotations</span><span class="p">[</span><span class="s2">&quot;author&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;CKS&quot;</span>
+<span class="n">simple_seq_r</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SeqRecord(seq=Seq(&#39;GATC&#39;), id=&#39;AC12345&#39;, name=&#39;&lt;unknown name&gt;&#39;, description=&#39;Made up sequence I wish I could write a paper about&#39;, dbxrefs=[])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Working with <em>per-letter-annotations</em> is similar, letter_annotations is a dictionary like attribute which will let you assign any Python sequence (i.e. a string, list or tuple) which has the same length as the sequence:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">simple_seq_r</span><span class="o">.</span><span class="n">letter_annotations</span><span class="p">[</span><span class="s2">&quot;phred_quality&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">simple_seq_r</span><span class="o">.</span><span class="n">letter_annotations</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;phred_quality&#39;: [40, 40, 38, 30]}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="seqrecord-objects-from-fasta-files">
+<h2>4.2.2 SeqRecord objects from FASTA files<a class="headerlink" href="#seqrecord-objects-from-fasta-files" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>This example uses a fairly large FASTA file containing the whole sequence for Yersinia pestis biovar Microtus str. 91001 plasmid pPCP1, originally downloaded from the NCBI.</p></li>
+<li><p>This file is included with the Biopython unit tests under the GenBank folder, or online <a class="reference external" href="https://raw.githubusercontent.com/biopython/biopython/master/Tests/GenBank/NC_005816.fna">NC_005816.fna</a> from our website.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">wget</span>
+<span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="n">path</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">()</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/biopython/biopython/master/Tests/GenBank/NC_005816.fna&quot;</span>
+<span class="n">wget</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">path</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="n">fasta_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;/NC_005816.fna&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">5</span><span class="o">-</span><span class="n">bf2fcbad83b3</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">wget</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">path</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/biopython/biopython/master/Tests/GenBank/NC_005816.fna&quot;</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">wget</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">path</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;wget&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">SeqIO</span>
+<span class="n">record</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">fasta_path</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="nb">len</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">seq</span><span class="p">)</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">record</span><span class="o">.</span><span class="n">name</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">record</span><span class="o">.</span><span class="n">description</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">record</span><span class="o">.</span><span class="n">id</span> <span class="p">)</span>
+<span class="n">record</span><span class="o">.</span><span class="n">seq</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9609
+gi|45478711|ref|NC_005816.1|
+gi|45478711|ref|NC_005816.1| Yersinia pestis biovar Microtus str. 91001 plasmid pPCP1, complete sequence
+gi|45478711|ref|NC_005816.1|
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Seq(&#39;TGTAACGAACGGTGCAATAGTGATCCACACCCAACGCCTGAAATCAGATCCAGG...CTG&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="seqrecord-objects-from-genbank-files">
+<h2>4.2.3 SeqRecord objects from GenBank files<a class="headerlink" href="#seqrecord-objects-from-genbank-files" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">wget</span>
+<span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="n">path</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">()</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/biopython/biopython/master/Tests/GenBank/NC_005816.gb&quot;</span>
+<span class="n">wget</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">path</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="n">genbank_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;/NC_005816.gb&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">SeqIO</span>
+<span class="n">record</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">genbank_path</span><span class="p">,</span> <span class="s2">&quot;genbank&quot;</span><span class="p">)</span>
+<span class="n">record</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SeqRecord(seq=Seq(&#39;TGTAACGAACGGTGCAATAGTGATCCACACCCAACGCCTGAAATCAGATCCAGG...CTG&#39;), id=&#39;NC_005816.1&#39;, name=&#39;NC_005816&#39;, description=&#39;Yersinia pestis biovar Microtus str. 91001 plasmid pPCP1, complete sequence&#39;, dbxrefs=[&#39;Project:58037&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="nb">len</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">seq</span><span class="p">)</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">record</span><span class="o">.</span><span class="n">name</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">record</span><span class="o">.</span><span class="n">description</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">record</span><span class="o">.</span><span class="n">id</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">record</span><span class="o">.</span><span class="n">dbxrefs</span> <span class="p">)</span>
+<span class="n">record</span><span class="o">.</span><span class="n">annotations</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9609
+NC_005816
+Yersinia pestis biovar Microtus str. 91001 plasmid pPCP1, complete sequence
+NC_005816.1
+[&#39;Project:58037&#39;]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;molecule_type&#39;: &#39;DNA&#39;,
+ &#39;topology&#39;: &#39;circular&#39;,
+ &#39;data_file_division&#39;: &#39;BCT&#39;,
+ &#39;date&#39;: &#39;21-JUL-2008&#39;,
+ &#39;accessions&#39;: [&#39;NC_005816&#39;],
+ &#39;sequence_version&#39;: 1,
+ &#39;gi&#39;: &#39;45478711&#39;,
+ &#39;keywords&#39;: [&#39;&#39;],
+ &#39;source&#39;: &#39;Yersinia pestis biovar Microtus str. 91001&#39;,
+ &#39;organism&#39;: &#39;Yersinia pestis biovar Microtus str. 91001&#39;,
+ &#39;taxonomy&#39;: [&#39;Bacteria&#39;,
+  &#39;Proteobacteria&#39;,
+  &#39;Gammaproteobacteria&#39;,
+  &#39;Enterobacteriales&#39;,
+  &#39;Enterobacteriaceae&#39;,
+  &#39;Yersinia&#39;],
+ &#39;references&#39;: [Reference(title=&#39;Genetics of metabolic variations between Yersinia pestis biovars and the proposal of a new biovar, microtus&#39;, ...),
+  Reference(title=&#39;Complete genome sequence of Yersinia pestis strain 91001, an isolate avirulent to humans&#39;, ...),
+  Reference(title=&#39;Direct Submission&#39;, ...),
+  Reference(title=&#39;Direct Submission&#39;, ...)],
+ &#39;comment&#39;: &#39;PROVISIONAL REFSEQ: This record has not yet been subject to final\nNCBI review. The reference sequence was derived from AE017046.\nCOMPLETENESS: full length.&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="feature-location-and-position-objects">
+<h1>4.3 Feature, location and position objects<a class="headerlink" href="#feature-location-and-position-objects" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="seqfeature-objects">
+<h2>4.3.1 SeqFeature objects<a class="headerlink" href="#seqfeature-objects" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>The key idea about each SeqFeature object is to describe a region on a parent sequence, typically a SeqRecord object.</p></li>
+<li><p>That region is described with a location object, typically a range between two positions (see Section 4.3.2 below).</p></li>
+<li><p>The attributes of a SeqFeature are:</p></li>
+<li><p><strong>.type</strong> { This is a textual description of the type of feature (for instance, this will be something like <code class="docutils literal notranslate"><span class="pre">CDS'</span> <span class="pre">or</span> </code>gene’).</p></li>
+<li><p><strong>.location</strong> { The location of the SeqFeature on the sequence that you are dealing with, see Section 4.3.2 below. The SeqFeature delegates much of its functionality to the location object, and includes a number of shortcut attributes for properties of the location:</p></li>
+<li><p><strong>- .ref</strong> { shorthand for .location.ref { any (dierent) reference sequence the location is referring to. Usually just None.</p></li>
+<li><p><strong>- .ref_db</strong> { shorthand for .location.ref_db { species the database any identier in .ref refers to. Usually just None.</p></li>
+<li><p>** - .strand** { shorthand for .location.strand { the strand on the sequence that the feature is located on. For double stranded nucleotide sequence this may either be 1 for the top strand, 􀀀1 for the bottom strand, 0 if the strand is important but is unknown, or None if it doesn’t matter. This is None for proteins, or single stranded sequences.</p></li>
+<li><p><strong>.qualifiers</strong> { This is a Python dictionary of additional information about the feature. The key is some kind of terse one-word description of what the information contained in the value is about, and the value is the actual information. For example, a common key for a qualier might be \evidence” and the value  might be \computational (non-experimental).” This is just a way to let the person who is looking at the feature know that it has not be experimentally (i. e. in a wet lab) conrmed. Note that other the
+value will be a list of strings (even when there is only one string). This is a reection of the feature
+tables in GenBank/EMBL les.</p></li>
+<li><p><strong>.sub_features</strong> { This used to be used to represent features with complicated locations like `joins’ in Gen-
+Bank/EMBL les. This has been deprecated with the introduction of the CompoundLocation object,
+and should now be ignored.</p></li>
+</ul>
+</div>
+<div class="section" id="positions-and-locations">
+<h2>4.3.2 Positions and locations<a class="headerlink" href="#positions-and-locations" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>position</strong> { This refers to a single position on a sequence, which may be fuzzy or not. For instance, 5, 20,
+&lt;100 and &gt;200 are all positions.</p></li>
+<li><p><strong>location</strong> { A location is region of sequence bounded by some positions. For instance 5..20 (i. e. 5 to 20) is
+a location.</p></li>
+</ul>
+<div class="section" id="featurelocation-object">
+<h3>4.3.2.1 FeatureLocation object<a class="headerlink" href="#featurelocation-object" title="Permalink to this headline">¶</a></h3>
+<p>Unless you work with eukaryotic genes, most SeqFeature locations are extremely simple - you just need
+start and end coordinates and a strand. That’s essentially all the basic FeatureLocation object does.
+In practise of course, things can be more complicated. First of all we have to handle compound locations
+made up of several regions. Secondly, the positions themselves may be fuzzy (inexact).</p>
+</div>
+<div class="section" id="compoundlocation-object">
+<h3>4.3.2.2 CompoundLocation object<a class="headerlink" href="#compoundlocation-object" title="Permalink to this headline">¶</a></h3>
+<p>Biopython 1.62 introduced the CompoundLocation as part of a restructuring of how complex locations made
+up of multiple regions are represented. The main usage is for handling `join’ locations in EMBL/GenBank
+les.</p>
+</div>
+<div class="section" id="fuzzy-positions">
+<h3>4.3.2.3 Fuzzy Positions<a class="headerlink" href="#fuzzy-positions" title="Permalink to this headline">¶</a></h3>
+<p>So far we’ve only used simple positions. One complication in dealing with feature locations comes in the
+positions themselves. In biology many times things aren’t entirely certain (as much as us wet lab biologists
+try to make them certain!). For instance, you might do a dinucleotide priming experiment and discover that
+the start of mRNA transcript starts at one of two sites. This is very useful information, but the complication
+comes in how to represent this as a position. To help us deal with this, we have the concept of fuzzy positions.
+<strong>Basically there are several types of fuzzy positions, so we have ve classes do deal with them:</strong></p>
+<ul class="simple">
+<li><p>ExactPosition { As its name suggests, this class represents a position which is specied as exact along
+the sequence. This is represented as just a number, and you can get the position by looking at the
+position attribute of the object.</p></li>
+<li><p>BeforePosition { This class represents a fuzzy position that occurs prior to some specied site. In Gen-
+Bank/EMBL notation, this is represented as something like &lt;13
+, signifying that the real position is
+located somewhere less than 13. To get the specied upper boundary, look at the position attribute
+of the object.</p></li>
+<li><p>AfterPosition { Contrary to BeforePosition, this class represents a position that occurs after some speci
+ed site. This is represented in GenBank as &gt;13
+, and like BeforePosition, you get the boundary
+number by looking at the position attribute of the object.</p></li>
+<li><p>WithinPosition { Occasionally used for GenBank/EMBL locations, this class models a position which
+occurs somewhere between two specied nucleotides. In GenBank/EMBL notation, this would be
+represented as `(1.5)’, to represent that the position is somewhere within the range 1 to 5. To get the
+information in this class you have to look at two attributes. The position attribute species the lower
+boundary of the range we are looking at, so in our example case this would be one. The extension
+attribute species the range to the higher boundary, so in this case it would be 4. So object.position
+is the lower boundary and object.position + object.extension is the upper boundary.</p></li>
+<li><p>OneOfPosition { Occasionally used for GenBank/EMBL locations, this class deals with a position where
+several possible values exist, for instance you could use this if the start codon was unclear and there
+where two candidates for the start of the gene. Alternatively, that might be handled explicitly as two
+related gene features.</p></li>
+<li><p>UnknownPosition { This class deals with a position of unknown location. This is not used in Gen-
+Bank/EMBL, but corresponds to the `?’ feature coordinate used in UniProt.</p></li>
+</ul>
+</div>
+<div class="section" id="location-testing">
+<h3>4.3.2.4 Location testing<a class="headerlink" href="#location-testing" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">SeqIO</span>
+<span class="n">my_snp</span> <span class="o">=</span> <span class="mi">4350</span>
+
+<span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">record</span><span class="o">.</span><span class="n">features</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">my_snp</span> <span class="ow">in</span> <span class="n">feature</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="n">feature</span><span class="o">.</span><span class="n">qualifiers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;db_xref&quot;</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>source [&#39;taxon:229193&#39;]
+gene [&#39;GeneID:2767712&#39;]
+CDS [&#39;GI:45478716&#39;, &#39;GeneID:2767712&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">SeqIO</span>
+<span class="n">my_snp</span> <span class="o">=</span> <span class="mi">1888</span>
+<span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">record</span><span class="o">.</span><span class="n">features</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">my_snp</span> <span class="ow">in</span> <span class="n">feature</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="n">feature</span><span class="o">.</span><span class="n">qualifiers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;db_xref&quot;</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>source [&#39;taxon:229193&#39;]
+repeat_region None
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="sequence-described-by-a-feature-or-location">
+<h2>4.3.3 Sequence described by a feature or location<a class="headerlink" href="#sequence-described-by-a-feature-or-location" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>SeqFeature</strong> is a description of how to get a location from a parent sequence</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
+<span class="kn">from</span> <span class="nn">Bio.SeqFeature</span> <span class="kn">import</span> <span class="n">SeqFeature</span><span class="p">,</span> <span class="n">FeatureLocation</span>
+<span class="n">parent_sequence</span> <span class="o">=</span> <span class="n">Seq</span><span class="p">(</span><span class="s2">&quot;ACCGAGACGGCAAAGGCTAGCATAGGTATGAGACTTCCTTCCTGCCAGTGCTGAGGAACTGGGAGCCTAC&quot;</span><span class="p">)</span>
+<span class="n">feature</span> <span class="o">=</span> <span class="n">SeqFeature</span><span class="p">(</span><span class="n">FeatureLocation</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">18</span><span class="p">),</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;gene&quot;</span><span class="p">,</span> <span class="n">strand</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># &lt;- notice that it does not reference the parent_sequence</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feature_seq</span> <span class="o">=</span> <span class="n">seq</span><span class="p">[</span><span class="n">feature</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">start</span><span class="p">:</span><span class="n">feature</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">end</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">feature_seq</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GACGGCAAAGGCT
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feature_seq</span> <span class="o">=</span> <span class="n">seq</span><span class="p">[</span><span class="n">feature</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">start</span><span class="p">:</span><span class="n">feature</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">end</span><span class="p">]</span><span class="o">.</span><span class="n">reverse_complement</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">feature_seq</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AGCCTTTGCCGTC
+</pre></div>
+</div>
+</div>
+</div>
+<p>Conversely, the <strong>SeqFeature</strong> also has the extract functionality where a sequence is referenced.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feature_seq</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">feature_seq</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AGCCTTTGCCGTC
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="comparison-and-differences">
+<h1>4.4 Comparison (and differences)<a class="headerlink" href="#comparison-and-differences" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
+<span class="kn">from</span> <span class="nn">Bio.SeqRecord</span> <span class="kn">import</span> <span class="n">SeqRecord</span>
+<span class="n">record1</span> <span class="o">=</span> <span class="n">SeqRecord</span><span class="p">(</span><span class="n">Seq</span><span class="p">(</span><span class="s2">&quot;ACGT&quot;</span><span class="p">),</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+<span class="n">record2</span> <span class="o">=</span> <span class="n">SeqRecord</span><span class="p">(</span><span class="n">Seq</span><span class="p">(</span><span class="s2">&quot;ACGT&quot;</span><span class="p">),</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">record1</span> <span class="o">==</span> <span class="n">record2</span>
+</pre></div>
+</div>
+<p>SeqRecord comparison is deliberately not implemented. Explicitly compare the attributes of interest.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="n">record1</span><span class="o">.</span><span class="n">id</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">record2</span><span class="o">.</span><span class="n">id</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>test
+test
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="n">record1</span><span class="o">.</span><span class="n">seq</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">record2</span><span class="o">.</span><span class="n">seq</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ACGT
+ACGT
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="references">
+<h1>4.5 References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Bio.SeqFeature.Reference class
+
+* journal
+* title 
+* authors
+* medline_id 
+* pubmed_id 
+* comment 
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-format-method">
+<h1>4.6 The format method<a class="headerlink" href="#the-format-method" title="Permalink to this headline">¶</a></h1>
+<p>The format method of <strong>SeqRecord</strong> allows you to print in a format acceptable by SeqIO.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
+<span class="kn">from</span> <span class="nn">Bio.SeqRecord</span> <span class="kn">import</span> <span class="n">SeqRecord</span>
+<span class="n">record</span> <span class="o">=</span> <span class="n">SeqRecord</span><span class="p">(</span>
+    <span class="n">Seq</span><span class="p">(</span>
+        <span class="s2">&quot;MMYQQGCFAGGTVLRLAKDLAENNRGARVLVVCSEITAVTFRGPSETHLDSMVGQALFGD&quot;</span>
+        <span class="s2">&quot;GAGAVIVGSDPDLSVERPLYELVWTGATLLPDSEGAIDGHLREVGLTFHLLKDVPGLISK&quot;</span>
+        <span class="s2">&quot;NIEKSLKEAFTPLGISDWNSTFWIAHPGGPAILDQVEAKLGLKEEKMRATREVLSEYGNM&quot;</span>
+        <span class="s2">&quot;SSAC&quot;</span>
+        <span class="p">),</span>
+        <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;gi|14150838|gb|AAK54648.1|AF376133_1&quot;</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;chalcone synthase [Cucumis sativus]&quot;</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&gt;gi|14150838|gb|AAK54648.1|AF376133_1 chalcone synthase [Cucumis sativus]
+MMYQQGCFAGGTVLRLAKDLAENNRGARVLVVCSEITAVTFRGPSETHLDSMVGQALFGD
+GAGAVIVGSDPDLSVERPLYELVWTGATLLPDSEGAIDGHLREVGLTFHLLKDVPGLISK
+NIEKSLKEAFTPLGISDWNSTFWIAHPGGPAILDQVEAKLGLKEEKMRATREVLSEYGNM
+SSAC
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;fasta&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&gt;gi|14150838|gb|AAK54648.1|AF376133_1 chalcone synthase [Cucumis sativus]
+MMYQQGCFAGGTVLRLAKDLAENNRGARVLVVCSEITAVTFRGPSETHLDSMVGQALFGD
+GAGAVIVGSDPDLSVERPLYELVWTGATLLPDSEGAIDGHLREVGLTFHLLKDVPGLISK
+NIEKSLKEAFTPLGISDWNSTFWIAHPGGPAILDQVEAKLGLKEEKMRATREVLSEYGNM
+SSAC
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="slicing-a-seqrecord">
+<h1>4.7 Slicing a SeqRecord<a class="headerlink" href="#slicing-a-seqrecord" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">SeqIO</span>
+<span class="n">record</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">genbank_path</span><span class="p">,</span> <span class="s2">&quot;genbank&quot;</span><span class="p">)</span>
+<span class="n">record</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SeqRecord(seq=Seq(&#39;TGTAACGAACGGTGCAATAGTGATCCACACCCAACGCCTGAAATCAGATCCAGG...CTG&#39;), id=&#39;NC_005816.1&#39;, name=&#39;NC_005816&#39;, description=&#39;Yersinia pestis biovar Microtus str. 91001 plasmid pPCP1, complete sequence&#39;, dbxrefs=[&#39;Project:58037&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9609
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">features</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>41
+</pre></div>
+</div>
+</div>
+</div>
+<p>Selecting a specific gene that has already been sequenced.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">features</span><span class="p">[</span><span class="mi">21</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type: CDS
+location: [4342:4780](+)
+qualifiers:
+    Key: codon_start, Value: [&#39;1&#39;]
+    Key: db_xref, Value: [&#39;GI:45478716&#39;, &#39;GeneID:2767712&#39;]
+    Key: gene, Value: [&#39;pim&#39;]
+    Key: locus_tag, Value: [&#39;YP_pPCP05&#39;]
+    Key: note, Value: [&#39;similar to many previously sequenced pesticin immunity protein entries of Yersinia pestis plasmid pPCP, e.g. gi| 16082683|,ref|NP_395230.1| (NC_003132) , gi|1200166|emb|CAA90861.1| (Z54145 ) , gi|1488655| emb|CAA63439.1| (X92856) , gi|2996219|gb|AAC62543.1| (AF053945) , and gi|5763814|emb|CAB531 67.1| (AL109969)&#39;]
+    Key: product, Value: [&#39;pesticin immunity protein&#39;]
+    Key: protein_id, Value: [&#39;NP_995571.1&#39;]
+    Key: transl_table, Value: [&#39;11&#39;]
+    Key: translation, Value: [&#39;MGGGMISKLFCLALIFLSSSGLAEKNTYTAKDILQNLELNTFGNSLSHGIYGKQTTFKQTEFTNIKSNTKKHIALINKDNSWMISLKILGIKRDEYTVCFEDFSLIRPPTYVAIHPLLIKKVKSGNFIVVKEIKKSIPGCTVYYH&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Reversely, select a parent record and get the associated features.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sub_record</span> <span class="o">=</span> <span class="n">record</span><span class="p">[</span><span class="mi">4300</span><span class="p">:</span><span class="mi">4800</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span> <span class="nb">len</span><span class="p">(</span> <span class="n">sub_record</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">sub_record</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>500
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SeqRecord(seq=Seq(&#39;ATAAATAGATTATTCCAAATAATTTATTTATGTAAGAACAGGATGGGAGGGGGA...TTA&#39;), id=&#39;NC_005816.1&#39;, name=&#39;NC_005816&#39;, description=&#39;Yersinia pestis biovar Microtus str. 91001 plasmid pPCP1, complete sequence&#39;, dbxrefs=[])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sub_record</span><span class="o">.</span><span class="n">features</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[SeqFeature(FeatureLocation(ExactPosition(42), ExactPosition(480), strand=1), type=&#39;gene&#39;),
+ SeqFeature(FeatureLocation(ExactPosition(42), ExactPosition(480), strand=1), type=&#39;CDS&#39;)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="n">sub_record</span><span class="o">.</span><span class="n">features</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type: gene
+location: [42:480](+)
+qualifiers:
+    Key: db_xref, Value: [&#39;GeneID:2767712&#39;]
+    Key: gene, Value: [&#39;pim&#39;]
+    Key: locus_tag, Value: [&#39;YP_pPCP05&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="n">sub_record</span><span class="o">.</span><span class="n">features</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type: CDS
+location: [42:480](+)
+qualifiers:
+    Key: codon_start, Value: [&#39;1&#39;]
+    Key: db_xref, Value: [&#39;GI:45478716&#39;, &#39;GeneID:2767712&#39;]
+    Key: gene, Value: [&#39;pim&#39;]
+    Key: locus_tag, Value: [&#39;YP_pPCP05&#39;]
+    Key: note, Value: [&#39;similar to many previously sequenced pesticin immunity protein entries of Yersinia pestis plasmid pPCP, e.g. gi| 16082683|,ref|NP_395230.1| (NC_003132) , gi|1200166|emb|CAA90861.1| (Z54145 ) , gi|1488655| emb|CAA63439.1| (X92856) , gi|2996219|gb|AAC62543.1| (AF053945) , and gi|5763814|emb|CAB531 67.1| (AL109969)&#39;]
+    Key: product, Value: [&#39;pesticin immunity protein&#39;]
+    Key: protein_id, Value: [&#39;NP_995571.1&#39;]
+    Key: transl_table, Value: [&#39;11&#39;]
+    Key: translation, Value: [&#39;MGGGMISKLFCLALIFLSSSGLAEKNTYTAKDILQNLELNTFGNSLSHGIYGKQTTFKQTEFTNIKSNTKKHIALINKDNSWMISLKILGIKRDEYTVCFEDFSLIRPPTYVAIHPLLIKKVKSGNFIVVKEIKKSIPGCTVYYH&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sub_record</span><span class="o">.</span><span class="n">description</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Yersinia pestis biovar Microtus str. 91001 plasmid pPCP1, complete sequence&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sub_record</span><span class="o">.</span><span class="n">name</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;NC_005816&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="adding-seqrecord-objects">
+<h1>4.8 Adding SeqRecord objects<a class="headerlink" href="#adding-seqrecord-objects" title="Permalink to this headline">¶</a></h1>
+<p>You can add SeqRecord objects together, giving a new SeqRecord</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">SeqIO</span>
+<span class="n">record</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">genbank_path</span><span class="p">,</span> <span class="s2">&quot;genbank&quot;</span><span class="p">)</span>
+<span class="n">record</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SeqRecord(seq=Seq(&#39;TGTAACGAACGGTGCAATAGTGATCCACACCCAACGCCTGAAATCAGATCCAGG...CTG&#39;), id=&#39;NC_005816.1&#39;, name=&#39;NC_005816&#39;, description=&#39;Yersinia pestis biovar Microtus str. 91001 plasmid pPCP1, complete sequence&#39;, dbxrefs=[&#39;Project:58037&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">record</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SeqRecord(seq=Seq(&#39;TGTAACGAACGGTGCAATAGTGATCCACACCCAACGCCTGAAATCAGATCCAGG...CTG&#39;), id=&#39;NC_005816.1&#39;, name=&#39;NC_005816&#39;, description=&#39;Yersinia pestis biovar Microtus str. 91001 plasmid pPCP1, complete sequence&#39;, dbxrefs=[&#39;Project:58037&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">record</span><span class="p">[</span><span class="mi">2000</span><span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SeqRecord(seq=Seq(&#39;GATACGCAGTCATATTTTTTACACAATTCTCTAATCCCGACAAGGTCGTAGGTC...CTG&#39;), id=&#39;NC_005816.1&#39;, name=&#39;NC_005816&#39;, description=&#39;Yersinia pestis biovar Microtus str. 91001 plasmid pPCP1, complete sequence&#39;, dbxrefs=[])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">record</span><span class="p">[:</span><span class="mi">2000</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SeqRecord(seq=Seq(&#39;TGTAACGAACGGTGCAATAGTGATCCACACCCAACGCCTGAAATCAGATCCAGG...GGA&#39;), id=&#39;NC_005816.1&#39;, name=&#39;NC_005816&#39;, description=&#39;Yersinia pestis biovar Microtus str. 91001 plasmid pPCP1, complete sequence&#39;, dbxrefs=[])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">features</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>41
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="shifting">
+<h2>Shifting<a class="headerlink" href="#shifting" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shifted</span> <span class="o">=</span> <span class="n">record</span><span class="p">[</span><span class="mi">2000</span><span class="p">:]</span> <span class="o">+</span> <span class="n">record</span><span class="p">[:</span><span class="mi">2000</span><span class="p">]</span>
+<span class="n">shifted</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SeqRecord(seq=Seq(&#39;GATACGCAGTCATATTTTTTACACAATTCTCTAATCCCGACAAGGTCGTAGGTC...GGA&#39;), id=&#39;NC_005816.1&#39;, name=&#39;NC_005816&#39;, description=&#39;Yersinia pestis biovar Microtus str. 91001 plasmid pPCP1, complete sequence&#39;, dbxrefs=[])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">shifted</span><span class="o">.</span><span class="n">features</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>40
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="reverse-complementing-seqrecord-objects">
+<h1>4.9 Reverse-complementing SeqRecord objects<a class="headerlink" href="#reverse-complementing-seqrecord-objects" title="Permalink to this headline">¶</a></h1>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./bioinformatics/notebooks/biopython"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="03-Sequence-Objects.html" title="previous page">Chapter 3: Sequence objects</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
