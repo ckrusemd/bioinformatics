@@ -2,3 +2,15 @@
 .Rhistory
 .RData
 .Ruserdata
+
+.vscode/
+
+_bookdown_files/
+
+docs/
+
+pip
+
+pip.error
+
+.DS_Store
