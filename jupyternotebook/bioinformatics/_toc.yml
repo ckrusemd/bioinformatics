@@ -1,0 +1,6 @@
+- file: bioinformatics/intro.ipynb
+- part: Biopython
+  chapters:
+  - file: bioinformatics/notebooks/biopython/02-Quick-Start.ipynb
+  - file: bioinformatics/notebooks/biopython/03-Sequence-Objects.ipynb
+  - file: bioinformatics/notebooks/biopython/04-Sequence-Annotation-Objects.ipynb
